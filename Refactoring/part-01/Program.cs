@@ -1,10 +1,5 @@
 ﻿using RefactoringLab;
 
-// var shipping = new ShippingCostCalculator();
-// Console.WriteLine($"Aramex 2kg → {shipping.Calculate("Aramex", 2)}");
-// Console.WriteLine($"FedEx 2kg  → {shipping.Calculate("FedEx", 2)}");
-// Console.WriteLine();
-
 IShippingCostCalculatorFactory shippingFactory = new AramexShippingCostCalculatorFactory();
 var shippingCalculator = shippingFactory.Create();
 var shippingCost = shippingCalculator.Calculate(2);

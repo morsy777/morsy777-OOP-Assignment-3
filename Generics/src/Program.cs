@@ -13,8 +13,8 @@ store.Add(new Student(5, "Rasha"));
 
 //store.Add(new Student(1, "Mohamed"));
 
-var student = store.GetById(1);
-Console.WriteLine($"Id: {student?.Id}, Name: {student?.Name}\n"); // ? for null saftey
+var storeStudent = store.GetById(1);
+Console.WriteLine($"Id: {storeStudent?.Id}, Name: {storeStudent?.Name}\n"); // ? for null saftey
 
 foreach (var s in store.GetAll())
   Console.WriteLine($"Id: {s.Key}, Name: {s.Value.Name}");
@@ -27,8 +27,36 @@ foreach (var s in store.GetAll())
   Console.WriteLine($"Id: {s.Key}, Name: {s.Value.Name}");
 
 Console.WriteLine();
-
-
-
 #endregion
 
+#region Enumerable Extensions 
+
+// IEnumerable<int> nums = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+// nums = nums.Page(2, 2); // pageNumber = 2, pageSize = 2
+
+// foreach (var num in nums)
+//   Console.WriteLine(num);
+
+IEnumerable<Student> students = new List<Student>
+{
+  new Student(1, "Morsi"),
+  new Student(2, "Ali"),
+  new Student(3, "Eslam"),
+  new Student(4, "Sara"),
+  new Student(5, "Rasha"),
+  new Student(6, "Mohamed"),
+  new Student(7, "Ahmed")
+};
+
+var pagedStudents = students.Page(2, 2); // pageNumber = 2, pageSize = 2
+
+foreach (var student in pagedStudents)
+  Console.WriteLine($"Id: {student.Id}, Name: {student.Name}");
+Console.WriteLine();
+
+var studentById = students.FindById(3);
+Console.WriteLine($"Id: {studentById?.Id}, Name: {studentById?.Name}\n");
+Console.WriteLine();
+
+// var s = new Store<string>();
+#endregion
